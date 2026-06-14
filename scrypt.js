@@ -85,19 +85,19 @@ const menuData = {
         name: 'Lomito Comun',
         price: 6500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/lomito-comun.jpeg'
+        image: 'images/lomito.jpeg'
       },
       especial: {
         name: 'Lomito Especial',
         price: 7500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/lomito-especial.jpeg'
+        image: 'images/lomito.jpeg'
       },
       lomibumi: {
         name: 'Lomibumi',
         price: 8000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/lomito-bumi.jpeg'
+        image: 'images/lomito.jpeg'
       }
     }
   },
@@ -113,19 +113,19 @@ const menuData = {
         name: 'Hamburguesa Comun',
         price: 4000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/hamburguesa-comun.jpeg'
+        image: 'images/hamburguesa.jpeg'
       },
       especial: {
         name: 'Hamburguesa Especial',
         price: 4500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/hamburguesa-especial.jpeg'
+        image: 'images/hamburguesa.jpeg'
       },
       hamburbumi: {
         name: 'Hamburbumi',
         price: 5500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/hamburguesa-bumi.jpeg'
+        image: 'images/hamburguesa.jpeg'
       }
     }
   },
@@ -822,18 +822,43 @@ function showStep(stepId) {
   document.getElementById(stepId).classList.add('active');
 }
 
+// ========================================
+// Navegacion
+// ========================================
+function showStep(stepId) {
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('active');
+  });
+  document.getElementById(stepId).classList.add('active');
+}
+
 function goBack(toStep) {
-  resetSelections();
+  if (toStep === 1) {
+    // Si volvemos al inicio de todo, limpiamos todas las variables
+    resetSelections();
+  } else if (toStep === 2) {
+    // Si volvemos al paso 2 (Variedades), MANTENEMOS la categoría,
+    // solo limpiamos la variedad elegida para que elija de nuevo.
+    selectedVariety = null;
+  }
+  
   showStep('step' + toStep);
 }
 
 function goBackFromStep3() {
+  // Validación de seguridad por si se perdió la memoria de la categoría
+  if (!selectedCategory || !menuData[selectedCategory]) {
+    goBack(1);
+    return;
+  }
+
   const categoryData = menuData[selectedCategory];
   if (categoryData.hasVariety) {
+    // Si tiene variedades (como Milanesas), vuelve al paso 2
     goBack(2);
   } else {
-    resetSelections();
-    showStep('step1');
+    // Si es un producto directo, vuelve al menú principal
+    goBack(1);
   }
 }
 
