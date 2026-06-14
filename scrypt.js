@@ -1,7 +1,7 @@
 // ========================================
 // Configuracion - Cambia el numero de WhatsApp aqui
 // ========================================
-const WHATSAPP_NUMBER = '5493815088924'; // Formato: codigo pais + numero sin espacios ni guiones
+const WHATSAPP_NUMBER = '5493815350105'; // Formato: codigo pais + numero sin espacios ni guiones
 
 // ========================================
 // Datos del Menu
