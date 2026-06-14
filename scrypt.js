@@ -223,15 +223,15 @@ const menuData = {
     products: {
       pepsi: {
         name: 'Lata Pepsi',
-        price: 1500
+        price: 1000
       },
       fanta: {
         name: 'Lata Pepsi',
-        price: 1500
+        price: 1000
       },
       sprite: {
         name: 'Lata Pepsi',
-        price: 1500
+        price: 1000
       }
     }
   }
