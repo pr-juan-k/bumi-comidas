@@ -9,7 +9,7 @@ const WHATSAPP_NUMBER = '5493815350105'; // Formato: codigo pais + numero sin es
 const menuData = {
   milanesas: {
     name: 'Milanesas',
-    image: 'images/milanesa.png',
+    image: 'images/milanesa.jpeg',
     hasVariety: true,
     varieties: ['carne', 'molida'],
     products: {
@@ -18,19 +18,19 @@ const menuData = {
           name: 'Milanesa Comun',
           price: 6000,
           ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-          image: 'images/milanesa-comun.png'
+          image: 'images/milanesa-comun.jpeg'
         },
         especial: {
           name: 'Milanesa Especial',
           price: 7000,
           ingredients: ['lechuga', 'tomate', 'jamon', 'queso', 'huevo', 'papas fritas'],
-          image: 'images/milanesa-especial.png'
+          image: 'images/milanesa-especial.jpeg'
         },
         milabumi: {
           name: 'Milabumi',
           price: 8000,
           ingredients: ['cebolla caramelizada', 'queso cheddar', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'papas fritas'],
-          image: 'images/milanesa-bumi.png'
+          image: 'images/milanesa-bumi.jpeg'
         }
       },
       molida: {
@@ -38,26 +38,26 @@ const menuData = {
           name: 'Milanesa Molida Comun',
           price: 4000,
           ingredients: ['tomate', 'lechuga', 'mayonesa', 'mostaza', 'ketchup'],
-          image: 'images/milanesa-comun.png'
+          image: 'images/milanesa-comun.jpeg'
         },
         especial: {
           name: 'Milanesa Molida Especial',
           price: 5000,
           ingredients: ['lechuga', 'tomate', 'jamon', 'queso', 'huevo', 'mayonesa', 'mostaza', 'ketchup', 'papas fritas'],
-          image: 'images/milanesa-especial.png'
+          image: 'images/milanesa-especial.jpeg'
         },
         molibumi: {
           name: 'Molibumi',
           price: 6000,
           ingredients: ['lechuga', 'tomate', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'mayonesa', 'mostaza', 'ketchup', 'papas fritas'],
-          image: 'images/milanesa-bumi.png'
+          image: 'images/milanesa-bumi.jpeg'
         }
       }
     }
   },
   milanesaNapolitana: {
     name: 'Milanesa Napolitana',
-    image: 'images/milanesa-napolitana.png',
+    image: 'images/milanesa-napolitana.jpeg',
     hasVariety: false,
     isSimple: true,
     noIngredients: true,
@@ -65,45 +65,45 @@ const menuData = {
       '1persona': {
         name: 'Napolitana 1 Persona',
         price: 9000,
-        image: 'images/milanesa-napolitana.png',
+        image: 'images/milanesa-napolitana.jpeg',
         description: 'Al plato con papas fritas'
       },
       '2personas': {
         name: 'Napolitana 2 Personas',
         price: 17000,
-        image: 'images/milanesa-napolitana.png',
+        image: 'images/milanesa-napolitana.jpeg',
         description: 'Al plato con papas fritas'
       }
     }
   },
   lomitos: {
     name: 'Lomitos',
-    image: 'images/lomito.png',
+    image: 'images/lomito.jpeg',
     hasVariety: false,
     products: {
       comun: {
         name: 'Lomito Comun',
         price: 6500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/lomito-comun.png'
+        image: 'images/lomito-comun.jpeg'
       },
       especial: {
         name: 'Lomito Especial',
         price: 7500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/lomito-especial.png'
+        image: 'images/lomito-especial.jpeg'
       },
       lomibumi: {
         name: 'Lomibumi',
         price: 8000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/lomito-bumi.png'
+        image: 'images/lomito-bumi.jpeg'
       }
     }
   },
   hamburguesas: {
     name: 'Hamburguesas',
-    image: 'images/hamburguesa.png',
+    image: 'images/hamburguesa.jpeg',
     hasVariety: false,
     hasMedallions: true,
     medallionPrice: 1500,
@@ -113,25 +113,25 @@ const menuData = {
         name: 'Hamburguesa Comun',
         price: 4000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/hamburguesa-comun.png'
+        image: 'images/hamburguesa-comun.jpeg'
       },
       especial: {
         name: 'Hamburguesa Especial',
         price: 4500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/hamburguesa-especial.png'
+        image: 'images/hamburguesa-especial.jpeg'
       },
       hamburbumi: {
         name: 'Hamburbumi',
         price: 5500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/hamburguesa-bumi.png'
+        image: 'images/hamburguesa-bumi.jpeg'
       }
     }
   },
   papas: {
     name: 'Papas Fritas',
-    image: 'images/papas.png',
+    image: 'images/papas.jpeg',
     hasVariety: false,
     isSimple: true,
     hasAddon: true,
@@ -141,51 +141,51 @@ const menuData = {
       'cono_chico': {
         name: 'Cono Chico',
         price: 1000,
-        image: 'images/papas-cono-chico.png'
+        image: 'images/papas-cono-chico.jpeg'
       },
       'cono_grande': {
         name: 'Cono Grande',
         price: 2000,
-        image: 'images/papas-cono-grande.png'
+        image: 'images/papas-cono-grande.jpeg'
       },
       'bandeja_chica': {
         name: 'Bandeja Chica',
         price: 2500,
-        image: 'images/papas-bandeja-chica.png'
+        image: 'images/papas-bandeja-chica.jpeg'
       },
       'bandeja_grande': {
         name: 'Bandeja Grande',
         price: 3000,
-        image: 'images/papas-bandeja-grande.png'
+        image: 'images/papas-bandeja-grande.jpeg'
       }
     }
   },
   pizzas: {
     name: 'Pizzas',
-    image: 'images/pizza.png',
+    image: 'images/pizza.jpeg',
     hasVariety: false,
     isSimple: true,
     products: {
       muzzarela: {
         name: 'Pizza Muzzarela',
         price: 6000,
-        image: 'images/pizza-muzzarella.png'
+        image: 'images/pizza-muzzarella.jpeg'
       },
       especial: {
         name: 'Pizza Especial',
         price: 6500,
-        image: 'images/pizza-especial.png'
+        image: 'images/pizza-especial.jpeg'
       },
       napolitana: {
         name: 'Pizza Napolitana',
         price: 7500,
-        image: 'images/pizza-napolitana.png'
+        image: 'images/pizza-napolitana.jpeg'
       }
     }
   },
   empanadas: {
     name: 'Empanadas',
-    image: 'images/empanada.png',
+    image: 'images/empanada.jpeg',
     hasVariety: true,
     varieties: ['carne', 'pollo'],
     isSimple: true,
@@ -194,31 +194,31 @@ const menuData = {
         '12_unidades': {
           name: 'Empanadas de Carne x12',
           price: 11500,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpeg'
         },
         '6_unidades': {
           name: 'Empanadas de Carne x6',
           price: 6000,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpeg'
         }
       },
       pollo: {
         '12_unidades': {
           name: 'Empanadas de Pollo x12',
           price: 11500,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpeg'
         },
         '6_unidades': {
           name: 'Empanadas de Pollo x6',
           price: 6000,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpeg'
         }
       }
     }
   },
   bebidas: {
     name: 'Bebidas',
-    image: 'images/bebidas.png',
+    image: 'images/bebidas.jpeg',
     isBeverage: true,
     products: {
       pepsi: {
@@ -239,17 +239,17 @@ const menuData = {
 
 // Imagenes de ingredientes
 const ingredientImages = {
-  'lechuga': 'images/ingredientes/lechuga.png',
-  'tomate': 'images/ingredientes/tomate.png',
-  'jamon': 'images/ingredientes/jamon.png',
-  'queso': 'images/ingredientes/queso.png',
-  'huevo': 'images/ingredientes/huevo.png',
-  'queso cheddar': 'images/ingredientes/cheddar.png',
-  'cebolla caramelizada': 'images/ingredientes/cebolla.png',
-  'mayonesa': 'images/ingredientes/mayonesa.png',
-  'mostaza': 'images/ingredientes/mostaza.png',
-  'ketchup': 'images/ingredientes/ketchup.png',
-  'papas fritas': 'images/ingredientes/papas-fritas.png'
+  'lechuga': 'images/ingredientes/lechuga.jpeg',
+  'tomate': 'images/ingredientes/tomate.jpeg',
+  'jamon': 'images/ingredientes/jamon.jpeg',
+  'queso': 'images/ingredientes/queso.jpeg',
+  'huevo': 'images/ingredientes/huevo.jpeg',
+  'queso cheddar': 'images/ingredientes/cheddar.jpeg',
+  'cebolla caramelizada': 'images/ingredientes/cebolla.jpeg',
+  'mayonesa': 'images/ingredientes/mayonesa.jpeg',
+  'mostaza': 'images/ingredientes/mostaza.jpeg',
+  'ketchup': 'images/ingredientes/ketchup.jpeg',
+  'papas fritas': 'images/ingredientes/papas-fritas.jpeg'
 };
 
 // ========================================
@@ -289,7 +289,7 @@ function renderMenuItems() {
     menuItem.onclick = () => selectCategory(key);
     
     menuItem.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" class="menu-item-image">
+      <img loading="lazy" src="${item.image}" alt="${item.name}" class="menu-item-image">
       <div class="menu-item-info">
         <div class="menu-item-name">${item.name}</div>
       </div>
@@ -341,7 +341,7 @@ function renderVarieties(category) {
     varietyItem.onclick = () => selectVariety(variety);
     
     varietyItem.innerHTML = `
-      <img src="${categoryData.image}" alt="${variety}" class="menu-item-image">
+      <img loading="lazy" src="${categoryData.image}" alt="${variety}" class="menu-item-image">
       <div class="variety-item-name">${variety.charAt(0).toUpperCase() + variety.slice(1)}</div>
     `;
     
@@ -385,7 +385,7 @@ function renderSimpleOptions(category) {
     
     html += `
       <div class="simple-option" onclick="addSimpleProduct('${category}', '${key}')">
-        <img src="${imgSrc}" alt="${product.name}" class="simple-option-image">
+        <img loading="lazy" src="${imgSrc}" alt="${product.name}" class="simple-option-image">
         <div class="simple-option-info">
           <div class="simple-option-name">${product.name}</div>
           ${desc ? `<div class="simple-option-desc">${desc}</div>` : ''}
@@ -435,7 +435,7 @@ function renderSimpleOptionsWithVariety(category, variety) {
     
     html += `
       <div class="simple-option" onclick="addSimpleProductWithVariety('${category}', '${variety}', '${key}')">
-        <img src="${imgSrc}" alt="${product.name}" class="simple-option-image">
+        <img loading="lazy" src="${imgSrc}" alt="${product.name}" class="simple-option-image">
         <div class="simple-option-info">
           <div class="simple-option-name">${product.name}</div>
         </div>
@@ -484,7 +484,7 @@ function renderCustomization(category, variety = null) {
     html += `
       <div class="product-type-option ${key === selectedProductType ? 'selected' : ''}" 
            onclick="selectProductType('${key}')" data-type="${key}">
-        <img src="${imgSrc}" alt="${product.name}" class="product-type-image">
+        <img loading="lazy" src="${imgSrc}" alt="${product.name}" class="product-type-image">
         <div class="product-type-info">
           <div class="product-type-name">${product.name}</div>
           ${ingredientsText ? `<div class="product-type-ingredients">${ingredientsText}</div>` : ''}
@@ -577,7 +577,7 @@ function updateIngredientsForSelectedType() {
       <label class="ingredient-item">
         <input type="checkbox" class="ingredient-checkbox" 
                checked onchange="toggleIngredient('${ingredient}', this.checked)">
-        <img src="${imgSrc}" alt="${ingredient}" class="ingredient-image">
+        <img loading="lazy" src="${imgSrc}" alt="${ingredient}" class="ingredient-image">
         <span class="ingredient-name">${ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</span>
       </label>
     `;
@@ -784,7 +784,7 @@ function renderBeverages() {
     beverageItem.onclick = () => addBeverage(key);
     
     beverageItem.innerHTML = `
-      <img src="${menuData.bebidas.image}" alt="${beverage.name}" class="beverage-image">
+      <img loading="lazy" src="${menuData.bebidas.image}" alt="${beverage.name}" class="beverage-image">
       <div class="beverage-name">${beverage.name}</div>
       <div class="beverage-price">$${beverage.price.toLocaleString()}</div>
     `;
@@ -887,7 +887,7 @@ function updateOrderSummary() {
   
   summaryItems.innerHTML = orderItems.map(item => `
     <div class="summary-item">
-      <img src="${item.image}" alt="${item.name}" class="summary-item-image">
+      <img loading="lazy" src="${item.image}" alt="${item.name}" class="summary-item-image">
       <div class="summary-item-info">
         <div class="summary-item-name">${item.name}</div>
         ${item.details ? `<div class="summary-item-details">${item.details}</div>` : ''}
