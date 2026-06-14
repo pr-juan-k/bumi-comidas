@@ -1,4 +1,28 @@
 /*ventana pide direcicon y datos */
+.opciones-direccion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.opciones-direccion label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #fff;
+  margin: 0;
+}
+
+.opciones-direccion input[type="radio"] {
+  accent-color: #00bfff; /* Color celeste para combinar con tu app */
+  width: 16px;
+  height: 16px;
+}
 /* Estilos para el fondo oscuro del modal */
 .modal-overlay {
   position: fixed;

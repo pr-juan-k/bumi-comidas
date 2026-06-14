@@ -941,31 +941,52 @@ function toggleDireccion() {
 // Envio por WhatsApp ACTUALIZADO
 // ========================================
 function sendWhatsApp() {
-  if (orderItems.length === 0) return;
+ if (orderItems.length === 0) return;
   
-  // 1. Capturar y validar los datos del cliente
   const nombre = document.getElementById('clienteNombre').value.trim();
   const entrega = document.getElementById('tipoEntrega').value;
-  const direccion = document.getElementById('clienteDireccion').value.trim();
   const pago = document.getElementById('metodoPago').value;
+  
+  let direccionFinal = "";
 
   if (nombre === '') {
     alert("Por favor, ingresa tu nombre y apellido.");
     return;
   }
 
-  if (entrega === 'Envío a domicilio' && direccion === '') {
-    alert("Por favor, ingresa tu dirección para el envío.");
-    return;
+  // Nueva validación dependiendo de si eligió manual o GPS
+  if (entrega === 'Envío a domicilio') {
+    const metodo = document.querySelector('input[name="metodoDir"]:checked').value;
+    
+    if (metodo === 'manual') {
+      direccionFinal = document.getElementById('clienteDireccion').value.trim();
+      if (direccionFinal === '') {
+        alert("Por favor, ingresa tu dirección para el envío.");
+        return;
+      }
+    } else {
+      direccionFinal = document.getElementById('gpsLink').value;
+      if (direccionFinal === '') {
+        alert("Por favor, haz clic en 'Obtener mi ubicación' o elige escribirla manualmente.");
+        return;
+      }
+    }
   }
   
-  // 2. Armar el encabezado del mensaje con los datos
+  // Armar el encabezado
   let message = '🍔 *NUEVO PEDIDO*\n\n';
   message += `👤 *Cliente:* ${nombre}\n`;
   message += `🛵 *Entrega:* ${entrega}\n`;
+  
   if (entrega === 'Envío a domicilio') {
-    message += `📍 *Dirección:* ${direccion}\n`;
+    // Si la dirección empieza con https:// significa que es el link del GPS
+    if (direccionFinal.startsWith('https://')) {
+      message += `📍 *Ubicación GPS:* ${direccionFinal}\n`;
+    } else {
+      message += `📍 *Dirección:* ${direccionFinal}\n`;
+    }
   }
+  
   message += `💳 *Pago:* ${pago}\n`;
   message += '─────────────────\n\n';
   
@@ -1061,6 +1082,50 @@ function sendWhatsApp() {
   
   window.open(whatsappUrl, '_blank');
 }
+function cambiarMetodoDir() {
+  const metodo = document.querySelector('input[name="metodoDir"]:checked').value;
+  if (metodo === 'manual') {
+    document.getElementById('dirManual').style.display = 'block';
+    document.getElementById('dirGps').style.display = 'none';
+  } else {
+    document.getElementById('dirManual').style.display = 'none';
+    document.getElementById('dirGps').style.display = 'block';
+  }
+}
+
+function obtenerUbicacion() {
+  const status = document.getElementById('gpsStatus');
+  const linkInput = document.getElementById('gpsLink');
+  
+  status.textContent = "Buscando ubicación... Por favor acepta los permisos.";
+  status.style.color = "#00bfff";
+  
+  if (!navigator.geolocation) {
+    status.textContent = "Tu navegador no soporta geolocalización.";
+    status.style.color = "#ff4444";
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      // Generamos el link directo a Google Maps
+      const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+      
+      linkInput.value = mapsUrl;
+      status.textContent = "✅ Ubicación obtenida correctamente";
+      status.style.color = "#00C851"; // Verde de éxito
+    },
+    (error) => {
+      console.error(error);
+      status.textContent = "❌ Error al obtener ubicación. Asegúrate de tener el GPS activado y dar permisos, o escribe tu dirección manualmente.";
+      status.style.color = "#ff4444"; // Rojo de error
+    },
+    { enableHighAccuracy: true } // Fuerza a usar el GPS real del teléfono si está disponible
+  );
+}
+
 
 
 

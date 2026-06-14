@@ -161,8 +161,30 @@
     </div>
 
     <div class="form-group" id="grupoDireccion" style="display: none;">
-      <label for="clienteDireccion">Dirección de envío</label>
-      <input type="text" id="clienteDireccion" placeholder="Ej: San Martín 123">
+      <label>¿Cómo vas a ingresar tu dirección?</label>
+      
+      <div class="opciones-direccion">
+        <label>
+          <input type="radio" name="metodoDir" value="manual" checked onchange="cambiarMetodoDir()"> 
+          Escribir manualmente
+        </label>
+        <label>
+          <input type="radio" name="metodoDir" value="gps" onchange="cambiarMetodoDir()"> 
+          Enviar mi ubicación actual
+        </label>
+      </div>
+
+      <div id="dirManual" style="margin-top: 10px;">
+        <input type="text" id="clienteDireccion" placeholder="Ej: San Martín 123">
+      </div>
+
+      <div id="dirGps" style="display: none; margin-top: 10px; text-align: center;">
+        <button type="button" class="btn btn-secondary" onclick="obtenerUbicacion()" style="width: 100%;">
+          📍 Obtener mi ubicación
+        </button>
+        <p id="gpsStatus" style="font-size: 0.85em; color: #ccc; margin-top: 8px;">Haz clic para compartir tu ubicación</p>
+        <input type="hidden" id="gpsLink" value="">
+      </div>
     </div>
 
     <div class="form-group">
