@@ -1,3 +1,113 @@
+/*ventana pide direcicon y datos */
+/* Estilos para el fondo oscuro del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Estilos para la caja del formulario */
+.modal-content {
+  background-color: #1a1a1a; /* Color oscuro para que combine con tu app */
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid #333;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.form-group input, .form-group select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 1em;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.modal-actions .btn {
+  flex: 1; /* Hace que los botones ocupen el mismo ancho */
+  justify-content: center;
+}
+
+
+
+
+
+/*MI CARTEL RESALTADO DE CARRITO*/
+
+.order-summary.resaltado-activo {
+  border-top: 2px solid #00bfff; /* Línea celeste en la parte superior */
+  box-shadow: 0px -4px 15px rgba(0, 191, 255, 0.4); /* Brillo difuminado hacia arriba */
+  transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Opcional: Si prefieres que el brillo palpite constantemente para llamar más la atención */
+@keyframes latido-brillo {
+  0% { box-shadow: 0px -4px 10px rgba(0, 191, 255, 0.2); }
+  50% { box-shadow: 0px -4px 20px rgba(0, 191, 255, 0.6); }
+  100% { box-shadow: 0px -4px 10px rgba(0, 191, 255, 0.2); }
+}
+
+
+.resaltado-activo-animado {
+  border-top: 2px solid rgba(0, 191, 255, 0.5); /* Borde un poco más suave base */
+  animation: latido-brillo 1.5s infinite ease-in-out; /* infinite hace que nunca se detenga */
+  transition: all 0.3s ease;
+}
+/* Parpadea boton para nuevo pedido */
+@keyframes parpadeo-dos-veces {
+  0% { box-shadow: none; transform: scale(1); }
+  50% { box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.9); transform: scale(1.02); }
+  100% { box-shadow: none; transform: scale(1); }
+}
+
+/* La animación dura 0.6 segundos y el "2" indica que se repite exactamente dos veces */
+.animacion-parpadeo {
+  animation: parpadeo-dos-veces 0.6s ease-in-out 2;
+}
+
+
+
+
+
+
+
+
+
 /* ========================================
    CSS Reset y Variables
 ======================================== */
@@ -112,7 +222,7 @@ body {
 ======================================== */
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 10px 10px 50px;
 }
 
 /* ========================================
@@ -547,7 +657,7 @@ body {
 .action-buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 40px;
   margin-top: 24px;
 }
 
@@ -615,7 +725,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 3em;
   background: transparent;
   border: none;
   color: var(--color-text);

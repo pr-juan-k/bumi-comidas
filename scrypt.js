@@ -707,8 +707,9 @@ function addCustomProduct() {
   
   document.getElementById('addedItemName').textContent = product.name + ' agregado al pedido';
   showStep('step4');
+  animarBotonOtroPedido();
 }
-
+ 
 // ========================================
 // Agregar Producto Simple
 // ========================================
@@ -739,6 +740,7 @@ function addSimpleProduct(category, productKey) {
   
   document.getElementById('addedItemName').textContent = product.name + ' agregado al pedido';
   showStep('step4');
+  animarBotonOtroPedido();
 }
 
 function addSimpleProductWithVariety(category, variety, productKey) {
@@ -858,12 +860,25 @@ function updateOrderSummary() {
   const totalPrice = document.getElementById('totalPrice');
   const sendOrderBtn = document.getElementById('sendOrderBtn');
   
+  // NUEVO: Capturamos el contenedor principal del resumen
+  const orderSummaryContainer = document.getElementById('orderSummary'); 
+  
   itemCount.textContent = orderItems.length;
   
   const total = orderItems.reduce((sum, item) => sum + item.price, 0);
   totalPrice.textContent = total.toLocaleString();
   
   sendOrderBtn.disabled = orderItems.length === 0;
+  
+  // NUEVO: Lógica para activar/desactivar el brillo
+  // Lógica para activar/desactivar el brillo animado
+  if (orderItems.length > 0) {
+    // Usamos la clase con la animación
+    orderSummaryContainer.classList.add('resaltado-activo-animado'); 
+  } else {
+    // Quitamos la clase con la animación
+    orderSummaryContainer.classList.remove('resaltado-activo-animado');
+  }
   
   if (orderItems.length === 0) {
     summaryItems.innerHTML = '<div class="empty-order">Tu pedido esta vacio</div>';
@@ -902,12 +917,59 @@ function toggleSummary() {
 // ========================================
 // Envio por WhatsApp
 // ========================================
+// Funciones para manejar el cartel de checkout
+function abrirCartelCheckout() {
+  if (orderItems.length === 0) return;
+  document.getElementById('modalCheckout').style.display = 'flex';
+}
+
+function cerrarCartelCheckout() {
+  document.getElementById('modalCheckout').style.display = 'none';
+}
+
+function toggleDireccion() {
+  const tipoEntrega = document.getElementById('tipoEntrega').value;
+  const grupoDireccion = document.getElementById('grupoDireccion');
+  
+  if (tipoEntrega === 'Envío a domicilio') {
+    grupoDireccion.style.display = 'flex';
+  } else {
+    grupoDireccion.style.display = 'none';
+  }
+}
+
+// Envio por WhatsApp ACTUALIZADO
+// ========================================
 function sendWhatsApp() {
   if (orderItems.length === 0) return;
   
-  let message = '🍔 *NUEVO PEDIDO*\n\n';
+  // 1. Capturar y validar los datos del cliente
+  const nombre = document.getElementById('clienteNombre').value.trim();
+  const entrega = document.getElementById('tipoEntrega').value;
+  const direccion = document.getElementById('clienteDireccion').value.trim();
+  const pago = document.getElementById('metodoPago').value;
+
+  if (nombre === '') {
+    alert("Por favor, ingresa tu nombre y apellido.");
+    return;
+  }
+
+  if (entrega === 'Envío a domicilio' && direccion === '') {
+    alert("Por favor, ingresa tu dirección para el envío.");
+    return;
+  }
   
-  // Group items by category
+  // 2. Armar el encabezado del mensaje con los datos
+  let message = '🍔 *NUEVO PEDIDO*\n\n';
+  message += `👤 *Cliente:* ${nombre}\n`;
+  message += `🛵 *Entrega:* ${entrega}\n`;
+  if (entrega === 'Envío a domicilio') {
+    message += `📍 *Dirección:* ${direccion}\n`;
+  }
+  message += `💳 *Pago:* ${pago}\n`;
+  message += '─────────────────\n\n';
+  
+  // 3. Agrupar items por categoría (Tu código original)
   const categories = {
     sandwiches: [],
     milanesaNapolitana: [],
@@ -933,7 +995,7 @@ function sendWhatsApp() {
     }
   });
   
-  // Build message
+  // 4. Construir el resto del mensaje (Tu código original)
   if (categories.sandwiches.length > 0) {
     message += '🥪 *SANDWICHES:*\n';
     categories.sandwiches.forEach(item => {
@@ -990,8 +1052,27 @@ function sendWhatsApp() {
   message += '─────────────────\n';
   message += `💰 *TOTAL: $${total.toLocaleString()}*`;
   
+  // 5. Cerrar el modal y abrir WhatsApp
+  cerrarCartelCheckout();
+  
   const encodedMessage = encodeURIComponent(message);
+  // Asegúrate de tener definida la variable WHATSAPP_NUMBER en algún lado de tu código
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
   
   window.open(whatsappUrl, '_blank');
+}
+
+
+
+//BOTON nuevo pedido parpadea
+function animarBotonOtroPedido() {
+  const boton = document.getElementById('btnOtroPedido');
+  if (boton) {
+    // Quitamos la clase por si ya la tenía de un pedido anterior
+    boton.classList.remove('animacion-parpadeo');
+    // Este truco (reflow) fuerza al navegador a reiniciar la animación
+    void boton.offsetWidth; 
+    // Agregamos la clase para que parpadee 2 veces
+    boton.classList.add('animacion-parpadeo');
+  }
 }
