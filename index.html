@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa de Comidas - Pedidos Online</title>
+  <title>Bumi Comidas - Pedidos Online</title>
   <meta name="description" content="Realiza tu pedido de milanesas, lomitos, hamburguesas, pizzas y empanadas">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,7 +15,7 @@
         <img src="images/logo.png" alt="Logo" class="header-logo">
         <div class="header-text">
           <h1 class="header-title">Comidas Bumi</h1>
-          <p class="header-subtitle">Pedidos Online</p>
+          <p class="header-subtitle">Diseñado by Program.JK</p>
         </div>
       </div>
     </header>
@@ -161,30 +161,21 @@
     </div>
 
     <div class="form-group" id="grupoDireccion" style="display: none;">
-      <label>¿Cómo vas a ingresar tu dirección?</label>
       
-      <div class="opciones-direccion">
-        <label>
-          <input type="radio" name="metodoDir" value="manual" checked onchange="cambiarMetodoDir()"> 
-          Escribir manualmente
-        </label>
-        <label>
-          <input type="radio" name="metodoDir" value="gps" onchange="cambiarMetodoDir()"> 
-          Enviar mi ubicación actual
-        </label>
-      </div>
+      <label for="clienteDireccion">Dirección exacta (Calle, número, barrio)</label>
+      <input type="text" id="clienteDireccion" placeholder="Ej: San Martín 123, B° Centro" oninput="validarInputDireccion()">
 
-      <div id="dirManual" style="margin-top: 10px;">
-        <input type="text" id="clienteDireccion" placeholder="Ej: San Martín 123">
-      </div>
-
-      <div id="dirGps" style="display: none; margin-top: 10px; text-align: center;">
-        <button type="button" class="btn btn-secondary" onclick="obtenerUbicacion()" style="width: 100%;">
-          📍 Obtener mi ubicación
+      <div style="margin-top: 15px; text-align: center; background: #2a2a2a; padding: 10px; border-radius: 8px; border: 1px solid #444;">
+        <label style="display: block; margin-bottom: 8px; font-size: 0.9em; color: #fff;">Ubicación para el repartidor</label>
+        
+        <button type="button" id="btnGps" class="btn btn-secondary" onclick="obtenerUbicacion()" style="width: 100%; opacity: 0.5; cursor: not-allowed;" disabled>
+          📍 Obtener mi ubicación actual
         </button>
-        <p id="gpsStatus" style="font-size: 0.85em; color: #ccc; margin-top: 8px;">Haz clic para compartir tu ubicación</p>
+        
+        <p id="gpsStatus" style="font-size: 0.85em; color: #ffaa00; margin-top: 8px;">⚠️ Escribe tu dirección arriba para habilitar el GPS</p>
         <input type="hidden" id="gpsLink" value="">
       </div>
+      
     </div>
 
     <div class="form-group">

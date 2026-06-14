@@ -36,7 +36,7 @@ const menuData = {
       molida: {
         comun: {
           name: 'Milanesa Molida Comun',
-          price: 6000,
+          price: 4000,
           ingredients: ['tomate', 'lechuga', 'mayonesa', 'mostaza', 'ketchup'],
           image: 'images/milanesa-comun.png'
         },
@@ -226,11 +226,11 @@ const menuData = {
         price: 1500
       },
       fanta: {
-        name: 'Lata Fanta',
+        name: 'Lata Pepsi',
         price: 1500
       },
       sprite: {
-        name: 'Lata Sprite',
+        name: 'Lata Pepsi',
         price: 1500
       }
     }
@@ -940,57 +940,56 @@ function toggleDireccion() {
 
 // Envio por WhatsApp ACTUALIZADO
 // ========================================
+// Envio por WhatsApp ACTUALIZADO (Dirección Manual + GPS)
+// ========================================
 function sendWhatsApp() {
- if (orderItems.length === 0) return;
+  if (orderItems.length === 0) return;
   
+  // 1. Capturar los datos básicos
   const nombre = document.getElementById('clienteNombre').value.trim();
   const entrega = document.getElementById('tipoEntrega').value;
   const pago = document.getElementById('metodoPago').value;
   
-  let direccionFinal = "";
+  let direccionManual = "";
+  let linkGps = "";
 
+  // Validar nombre
   if (nombre === '') {
     alert("Por favor, ingresa tu nombre y apellido.");
     return;
   }
 
-  // Nueva validación dependiendo de si eligió manual o GPS
+  // 2. Validar que completó AMBOS campos si es envío a domicilio
   if (entrega === 'Envío a domicilio') {
-    const metodo = document.querySelector('input[name="metodoDir"]:checked').value;
+    direccionManual = document.getElementById('clienteDireccion').value.trim();
+    linkGps = document.getElementById('gpsLink').value;
     
-    if (metodo === 'manual') {
-      direccionFinal = document.getElementById('clienteDireccion').value.trim();
-      if (direccionFinal === '') {
-        alert("Por favor, ingresa tu dirección para el envío.");
-        return;
-      }
-    } else {
-      direccionFinal = document.getElementById('gpsLink').value;
-      if (direccionFinal === '') {
-        alert("Por favor, haz clic en 'Obtener mi ubicación' o elige escribirla manualmente.");
-        return;
-      }
+    if (direccionManual === '') {
+      alert("Por favor, escribe tu dirección exacta (Calle, número, barrio).");
+      return;
+    }
+    
+    if (linkGps === '') {
+      alert("Por favor, haz clic en el botón 'Obtener mi ubicación actual' para que el repartidor sepa llegar.");
+      return;
     }
   }
   
-  // Armar el encabezado
+  // 3. Armar el encabezado del mensaje
   let message = '🍔 *NUEVO PEDIDO*\n\n';
   message += `👤 *Cliente:* ${nombre}\n`;
   message += `🛵 *Entrega:* ${entrega}\n`;
   
+  // Agregamos AMBAS cosas al mensaje
   if (entrega === 'Envío a domicilio') {
-    // Si la dirección empieza con https:// significa que es el link del GPS
-    if (direccionFinal.startsWith('https://')) {
-      message += `📍 *Ubicación GPS:* ${direccionFinal}\n`;
-    } else {
-      message += `📍 *Dirección:* ${direccionFinal}\n`;
-    }
+    message += `📍 *Dirección escrita:* ${direccionManual}\n`;
+    message += `🗺️ *Mapa (GPS):* ${linkGps}\n`;
   }
   
   message += `💳 *Pago:* ${pago}\n`;
   message += '─────────────────\n\n';
   
-  // 3. Agrupar items por categoría (Tu código original)
+  // 4. Agrupar items por categoría
   const categories = {
     sandwiches: [],
     milanesaNapolitana: [],
@@ -1016,7 +1015,7 @@ function sendWhatsApp() {
     }
   });
   
-  // 4. Construir el resto del mensaje (Tu código original)
+  // 5. Construir el detalle del pedido
   if (categories.sandwiches.length > 0) {
     message += '🥪 *SANDWICHES:*\n';
     categories.sandwiches.forEach(item => {
@@ -1073,11 +1072,10 @@ function sendWhatsApp() {
   message += '─────────────────\n';
   message += `💰 *TOTAL: $${total.toLocaleString()}*`;
   
-  // 5. Cerrar el modal y abrir WhatsApp
+  // 6. Cerrar el modal y enviar a WhatsApp
   cerrarCartelCheckout();
   
   const encodedMessage = encodeURIComponent(message);
-  // Asegúrate de tener definida la variable WHATSAPP_NUMBER en algún lado de tu código
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
   
   window.open(whatsappUrl, '_blank');
@@ -1110,22 +1108,45 @@ function obtenerUbicacion() {
     (position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      // Generamos el link directo a Google Maps
-      const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
       
-      linkInput.value = mapsUrl;
+      // Link estándar de Google Maps
+      linkInput.value = `https://www.google.com/maps?q=${lat},${lng}`;
+      
       status.textContent = "✅ Ubicación obtenida correctamente";
-      status.style.color = "#00C851"; // Verde de éxito
+      status.style.color = "#00C851"; // Verde
     },
     (error) => {
       console.error(error);
-      status.textContent = "❌ Error al obtener ubicación. Asegúrate de tener el GPS activado y dar permisos, o escribe tu dirección manualmente.";
-      status.style.color = "#ff4444"; // Rojo de error
+      status.textContent = "❌ Error al obtener ubicación. Revisa tu GPS.";
+      status.style.color = "#ff4444"; // Rojo
     },
-    { enableHighAccuracy: true } // Fuerza a usar el GPS real del teléfono si está disponible
+    { enableHighAccuracy: true }
   );
 }
-
+function validarInputDireccion() {
+  const direccion = document.getElementById('clienteDireccion').value.trim();
+  const btnGps = document.getElementById('btnGps');
+  const status = document.getElementById('gpsStatus');
+  
+  // Si escribió al menos 4 caracteres, habilitamos el botón
+  if (direccion.length > 3) {
+    btnGps.disabled = false;
+    btnGps.style.opacity = "1";
+    btnGps.style.cursor = "pointer";
+    status.textContent = "Haz clic para confirmar esta dirección por GPS";
+    status.style.color = "#ccc";
+  } else {
+    // Si borra el texto, volvemos a deshabilitar el botón
+    btnGps.disabled = true;
+    btnGps.style.opacity = "0.5";
+    btnGps.style.cursor = "not-allowed";
+    status.textContent = "⚠️ Escribe tu dirección arriba para habilitar el GPS";
+    status.style.color = "#ffaa00";
+    
+    // Si borra el texto, también reseteamos el link del GPS por seguridad
+    document.getElementById('gpsLink').value = "";
+  }
+}
 
 
 
