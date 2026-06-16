@@ -222,16 +222,16 @@ const menuData = {
     isBeverage: true,
     products: {
       pepsi: {
-        name: 'Lata Pepsi',
+        name: 'Lata Pepsi 354ml',
         price: 1000
       },
       fanta: {
-        name: 'Lata Pepsi',
-        price: 1000
+        name: 'Botella Pepsi 2L',
+        price: 3000
       },
       sprite: {
-        name: 'Lata Pepsi',
-        price: 1000
+        name: 'NO DISPONIBLE',
+        price: 1
       }
     }
   }
