@@ -239,17 +239,17 @@ const menuData = {
 
 // Imagenes de ingredientes
 const ingredientImages = {
-  'lechuga': 'images/ingredientes/lechuga.jpeg',
-  'tomate': 'images/ingredientes/tomate.jpeg',
-  'jamon': 'images/ingredientes/jamon.jpeg',
-  'queso': 'images/ingredientes/queso.jpeg',
-  'huevo': 'images/ingredientes/huevo.jpeg',
+  'lechuga': 'images/ingredientes/lechuga.jpg',
+  'tomate': 'images/ingredientes/tomate.jpg',
+  'jamon': 'images/ingredientes/jamon.jpg',
+  'queso': 'images/ingredientes/queso.jpg',
+  'huevo': 'images/ingredientes/huevo.jpg',
   'queso cheddar': 'images/ingredientes/cheddar.jpg',
   'cebolla caramelizada': 'images/ingredientes/cebolla.jpg',
-  'mayonesa': 'images/ingredientes/mayonesa.jpeg',
-  'mostaza': 'images/ingredientes/mostaza.jpeg',
-  'ketchup': 'images/ingredientes/ketchup.jpeg',
-  'papas fritas': 'images/ingredientes/papas-fritas.jpeg'
+  'mayonesa': 'images/ingredientes/mayonesa.jpg',
+  'mostaza': 'images/ingredientes/mostaza.jpg',
+  'ketchup': 'images/ingredientes/ketchup.jpg',
+  'papas fritas': 'images/ingredientes/papas-fritas.jpg'
 };
 
 // ========================================
