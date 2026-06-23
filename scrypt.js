@@ -1022,6 +1022,13 @@ function sendWhatsApp() {
   }
   
   message += `💳 *Pago:* ${pago}\n`;
+  
+  // NUEVO: Agregamos el alias y el aviso solo si es transferencia
+  if (pago === 'Transferencia') {
+    message += `🏦 *ALIAS:* MI:ALIAS\n`;
+    message += `⚠️ *POR FAVOR, ENVÍE COMPROBANTE*\n`;
+  }
+  
   message += '─────────────────\n\n';
   
   // 4. Agrupar items por categoría
