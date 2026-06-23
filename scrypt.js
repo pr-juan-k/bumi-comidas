@@ -967,6 +967,8 @@ function toggleDireccion() {
 // ========================================
 // Envio por WhatsApp ACTUALIZADO (Dirección Manual + GPS)
 // ========================================
+// Envio por WhatsApp ACTUALIZADO (Dirección Manual + Referencia + GPS)
+// ========================================
 function sendWhatsApp() {
   if (orderItems.length === 0) return;
   
@@ -976,6 +978,7 @@ function sendWhatsApp() {
   const pago = document.getElementById('metodoPago').value;
   
   let direccionManual = "";
+  let referencia = "";
   let linkGps = "";
 
   // Validar nombre
@@ -984,9 +987,10 @@ function sendWhatsApp() {
     return;
   }
 
-  // 2. Validar que completó AMBOS campos si es envío a domicilio
+  // 2. Validar que completó los campos si es envío a domicilio
   if (entrega === 'Envío a domicilio') {
     direccionManual = document.getElementById('clienteDireccion').value.trim();
+    referencia = document.getElementById('clienteReferencia').value.trim(); // Capturamos la referencia
     linkGps = document.getElementById('gpsLink').value;
     
     if (direccionManual === '') {
@@ -1005,9 +1009,15 @@ function sendWhatsApp() {
   message += `👤 *Cliente:* ${nombre}\n`;
   message += `🛵 *Entrega:* ${entrega}\n`;
   
-  // Agregamos AMBAS cosas al mensaje
+  // Agregamos Dirección, Referencia (solo si escribió algo) y GPS al mensaje
   if (entrega === 'Envío a domicilio') {
     message += `📍 *Dirección escrita:* ${direccionManual}\n`;
+    
+    // Si el cliente escribió una referencia, la sumamos
+    if (referencia !== '') {
+      message += `🏠 *Referencia:* ${referencia}\n`;
+    }
+    
     message += `🗺️ *Mapa (GPS):* ${linkGps}\n`;
   }
   
@@ -1100,11 +1110,33 @@ function sendWhatsApp() {
   // 6. Cerrar el modal y enviar a WhatsApp
   cerrarCartelCheckout();
   
+  // --- INICIO DE CONTEO EN GOOGLE SHEETS ---
+  // Reemplaza esto con el enlace larguísimo que copiaste en el Paso 3
+  const urlGoogleSheet = 'https://script.google.com/macros/s/AKfycbwpoeVxaB6LC84nHx7Hz-U1IoZMerpmf9G0NFWKUNPjxO-HKrsvEjS-ysY1bcGQyr7NVw/exec';
+  
+  // Enviamos los datos de fondo sin que el usuario lo note
+  fetch(urlGoogleSheet, {
+    method: 'POST',
+    mode: 'no-cors', // Evita bloqueos de seguridad del navegador al enviar a Google
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      cliente: nombre,
+      entrega: entrega,
+      total: total
+    })
+  }).catch(error => console.error('Error en el conteo interno:', error));
+  // --- FIN DE CONTEO EN GOOGLE SHEETS ---
+
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
   
   window.open(whatsappUrl, '_blank');
 }
+
+
+
 function cambiarMetodoDir() {
   const metodo = document.querySelector('input[name="metodoDir"]:checked').value;
   if (metodo === 'manual') {
