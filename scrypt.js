@@ -18,7 +18,7 @@ const menuData = {
           name: 'Milanesa Comun',
           price: 6000,
           ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-          image: 'images/milanesa-comun.jpeg'
+          image: 'images/milanesa-comun.png'
         },
         especial: {
           name: 'Milanesa Especial',
@@ -30,7 +30,7 @@ const menuData = {
           name: 'Milabumi',
           price: 8000,
           ingredients: ['cebolla caramelizada', 'queso cheddar', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'papas fritas'],
-          image: 'images/milanesa-bumi.jpeg'
+          image: 'images/milanesa-bumi.png'
         }
       },
       molida: {
@@ -185,7 +185,7 @@ const menuData = {
   },
   empanadas: {
     name: 'Empanadas',
-    image: 'images/empanada.jpeg',
+    image: 'images/empanada.png',
     hasVariety: true,
     varieties: ['carne', 'pollo'],
     isSimple: true,
@@ -194,24 +194,24 @@ const menuData = {
         '12_unidades': {
           name: 'Empanadas de Carne x12',
           price: 11500,
-          image: 'images/empanada.jpeg'
+          image: 'images/empanada.png'
         },
         '6_unidades': {
           name: 'Empanadas de Carne x6',
           price: 6000,
-          image: 'images/empanada.jpeg'
+          image: 'images/empanada.png'
         }
       },
       pollo: {
         '12_unidades': {
           name: 'Empanadas de Pollo x12',
           price: 11500,
-          image: 'images/empanada.jpeg'
+          image: 'images/empanada.png'
         },
         '6_unidades': {
           name: 'Empanadas de Pollo x6',
           price: 6000,
-          image: 'images/empanada.jpeg'
+          image: 'images/empanada.png'
         }
       }
     }
