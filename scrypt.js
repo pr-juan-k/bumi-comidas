@@ -9,7 +9,7 @@ const WHATSAPP_NUMBER = '5493815350105'; // Formato: codigo pais + numero sin es
 const menuData = {
   milanesas: {
     name: 'Milanesas',
-    image: 'images/milanesa.jpeg',
+    image: 'images/milanesa.jpg',
     hasVariety: true,
     varieties: ['carne', 'molida'],
     products: {
@@ -18,19 +18,19 @@ const menuData = {
           name: 'Milanesa Comun',
           price: 6000,
           ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-          image: 'images/milanesa-comun.png'
+          image: 'images/milanesa-comun.jpg'
         },
         especial: {
           name: 'Milanesa Especial',
           price: 7000,
           ingredients: ['lechuga', 'tomate', 'jamon', 'queso', 'huevo', 'papas fritas'],
-          image: 'images/milanesa-especial.jpeg'
+          image: 'images/milanesa-especial.jpg'
         },
         milabumi: {
           name: 'Milabumi',
           price: 8000,
           ingredients: ['cebolla caramelizada', 'queso cheddar', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'papas fritas'],
-          image: 'images/milanesa-bumi.png'
+          image: 'images/milanesa-bumi.jpg'
         }
       },
       molida: {
@@ -38,26 +38,26 @@ const menuData = {
           name: 'Milanesa Molida Comun',
           price: 4000,
           ingredients: ['tomate', 'lechuga', 'mayonesa', 'mostaza', 'ketchup'],
-          image: 'images/milanesa-comun.jpeg'
+          image: 'images/milanesa-comun.jpg'
         },
         especial: {
           name: 'Milanesa Molida Especial',
           price: 5000,
           ingredients: ['lechuga', 'tomate', 'jamon', 'queso', 'huevo', 'mayonesa', 'mostaza', 'ketchup', 'papas fritas'],
-          image: 'images/milanesa-especial.jpeg'
+          image: 'images/milanesa-especial.jpg'
         },
         molibumi: {
           name: 'Molibumi',
           price: 6000,
           ingredients: ['lechuga', 'tomate', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'mayonesa', 'mostaza', 'ketchup', 'papas fritas'],
-          image: 'images/milanesa-bumi.jpeg'
+          image: 'images/milanesa-bumi.jpg'
         }
       }
     }
   },
   milanesaNapolitana: {
     name: 'Milanesa Napolitana',
-    image: 'images/milanesa-napolitana.jpeg',
+    image: 'images/milanesa-napolitana.jpg',
     hasVariety: false,
     isSimple: true,
     noIngredients: true,
@@ -65,45 +65,45 @@ const menuData = {
       '1persona': {
         name: 'Napolitana 1 Persona',
         price: 9000,
-        image: 'images/milanesa-napolitana.jpeg',
+        image: 'images/milanesa-napolitana.jpg',
         description: 'Al plato con papas fritas'
       },
       '2personas': {
         name: 'Napolitana 2 Personas',
         price: 17000,
-        image: 'images/milanesa-napolitana.jpeg',
+        image: 'images/milanesa-napolitana.jpg',
         description: 'Al plato con papas fritas'
       }
     }
   },
   lomitos: {
     name: 'Lomitos',
-    image: 'images/lomito.jpeg',
+    image: 'images/lomito.jpg',
     hasVariety: false,
     products: {
       comun: {
         name: 'Lomito Comun',
         price: 6500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/lomito.jpeg'
+        image: 'images/lomito.jpg'
       },
       especial: {
         name: 'Lomito Especial',
         price: 7500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/lomito.jpeg'
+        image: 'images/lomito.jpg'
       },
       lomibumi: {
         name: 'Lomibumi',
         price: 8000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/lomito.jpeg'
+        image: 'images/lomito.jpg'
       }
     }
   },
   hamburguesas: {
     name: 'Hamburguesas',
-    image: 'images/hamburguesa.jpeg',
+    image: 'images/hamburguesa.jpg',
     hasVariety: false,
     hasMedallions: true,
     medallionPrice: 1500,
@@ -113,25 +113,25 @@ const menuData = {
         name: 'Hamburguesa Comun',
         price: 4000,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup'],
-        image: 'images/hamburguesa.jpeg'
+        image: 'images/hamburguesa.jpg'
       },
       especial: {
         name: 'Hamburguesa Especial',
         price: 4500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'jamon', 'queso', 'huevo', 'papas fritas'],
-        image: 'images/hamburguesa.jpeg'
+        image: 'images/hamburguesa.jpg'
       },
       hamburbumi: {
         name: 'Hamburbumi',
         price: 5500,
         ingredients: ['lechuga', 'tomate', 'mayonesa', 'mostaza', 'ketchup', 'cebolla caramelizada', 'queso cheddar', 'jamon', 'papas fritas'],
-        image: 'images/hamburguesa.jpeg'
+        image: 'images/hamburguesa.jpg'
       }
     }
   },
   papas: {
     name: 'Papas Fritas',
-    image: 'images/papas.jpeg',
+    image: 'images/papas.jpg',
     hasVariety: false,
     isSimple: true,
     hasAddon: true,
@@ -141,51 +141,51 @@ const menuData = {
       'cono_chico': {
         name: 'Cono Chico',
         price: 1000,
-        image: 'images/papas-cono-chico.jpeg'
+        image: 'images/papas-cono-chico.jpg'
       },
       'cono_grande': {
         name: 'Cono Grande',
         price: 2000,
-        image: 'images/papas-cono-grande.jpeg'
+        image: 'images/papas-cono-grande.jpg'
       },
       'bandeja_chica': {
         name: 'Bandeja Chica',
         price: 2500,
-        image: 'images/papas-bandeja-chica.jpeg'
+        image: 'images/papas-bandeja-chica.jpg'
       },
       'bandeja_grande': {
         name: 'Bandeja Grande',
         price: 3000,
-        image: 'images/papas-bandeja-grande.jpeg'
+        image: 'images/papas-bandeja-grande.jpg'
       }
     }
   },
   pizzas: {
     name: 'Pizzas',
-    image: 'images/pizza.jpeg',
+    image: 'images/pizza.jpg',
     hasVariety: false,
     isSimple: true,
     products: {
       muzzarela: {
         name: 'Pizza Muzzarela',
         price: 6000,
-        image: 'images/pizza-muzzarella.jpeg'
+        image: 'images/pizza-muzzarella.jpg'
       },
       especial: {
         name: 'Pizza Especial',
         price: 6500,
-        image: 'images/pizza-especial.jpeg'
+        image: 'images/pizza-especial.jpg'
       },
       napolitana: {
         name: 'Pizza Napolitana',
         price: 7500,
-        image: 'images/pizza-napolitana.jpeg'
+        image: 'images/pizza-napolitana.jpg'
       }
     }
   },
   empanadas: {
     name: 'Empanadas',
-    image: 'images/empanada.png',
+    image: 'images/empanada.jpg',
     hasVariety: true,
     varieties: ['carne', 'pollo'],
     isSimple: true,
@@ -194,31 +194,31 @@ const menuData = {
         '12_unidades': {
           name: 'Empanadas de Carne x12',
           price: 11500,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpg'
         },
         '6_unidades': {
           name: 'Empanadas de Carne x6',
           price: 6000,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpg'
         }
       },
       pollo: {
         '12_unidades': {
           name: 'Empanadas de Pollo x12',
           price: 11500,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpg'
         },
         '6_unidades': {
           name: 'Empanadas de Pollo x6',
           price: 6000,
-          image: 'images/empanada.png'
+          image: 'images/empanada.jpg'
         }
       }
     }
   },
   bebidas: {
     name: 'Bebidas',
-    image: 'images/bebidas.jpeg',
+    image: 'images/bebidas.jpg',
     isBeverage: true,
     products: {
       pepsi: {
